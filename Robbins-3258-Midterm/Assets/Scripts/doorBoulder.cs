@@ -37,4 +37,9 @@ public class doorBoulder : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }
