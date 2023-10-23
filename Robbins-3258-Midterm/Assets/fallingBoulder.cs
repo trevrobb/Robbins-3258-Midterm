@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class fallingBoulder : MonoBehaviour
 {
@@ -28,7 +29,9 @@ public class fallingBoulder : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("ResetLevelHere");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
+
+    
 }
