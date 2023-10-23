@@ -21,7 +21,7 @@ public class FOVCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GetComponentInParent<NavMeshAgent>().SetDestination(other.transform.position);
+            this.GetComponentInParent<FOVEnemy>()._playerInFOV = true;
             this.gameObject.SetActive(false);
         }
     }
