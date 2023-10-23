@@ -25,7 +25,7 @@ public class FOVEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (this.gameObject.name.Contains("FOVEnemy")){
+        if (this.gameObject.CompareTag("Enemy" ) && (!this.gameObject.CompareTag("VisionCone"))){
             if (other.gameObject.CompareTag("Player"))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
