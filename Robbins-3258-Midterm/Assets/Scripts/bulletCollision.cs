@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bulletCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] AudioSource[] audioSources;
     void Start()
     {
         StartCoroutine(Despawn());
@@ -22,6 +22,12 @@ public class bulletCollision : MonoBehaviour
         {
             StopCoroutine(Despawn());
             Destroy(gameObject);
+            ParticleSystem ps = GameObject.Find("BloodPS").GetComponent<ParticleSystem>();
+            ps.transform.position = other.transform.position;
+            ps.Play();
+            int RandomAudionumber = Random.Range(0, 5);
+            AudioSource a = Instantiate(audioSources[RandomAudionumber], other.transform.position, Quaternion.identity);
+            StartCoroutine(DespawnAudio(a));
             Destroy(other.gameObject);
         }
     }
@@ -30,5 +36,11 @@ public class bulletCollision : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
+    }
+
+    IEnumerator DespawnAudio(AudioSource audio)
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(audio);
     }
 }
